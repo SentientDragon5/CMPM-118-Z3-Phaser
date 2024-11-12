@@ -1,4 +1,3 @@
-import './style.css'
 import { init } from 'z3-solver';
 
 const { Context } = await init();
@@ -23,3 +22,40 @@ document.querySelector('#app').innerHTML = `
     <p>I guess I could've just put the results here too...</p>
   </div>
 `
+// Jim Whitehead
+// Created: 5/26/2024
+// Phaser: 3.80.0
+//
+// Pathfinder demo
+//
+// An example of pathfinding in Phaser using the EasyStar.js pathfinder 
+// https://github.com/prettymuchbryce/easystarjs
+// 
+// Assets from the following Kenney Asset packs
+// Tiny Dungeon
+// https://kenney.nl/assets/tiny-dungeon
+//
+// Tiny Town
+// https://kenney.nl/assets/tiny-town
+//
+
+
+// game config
+let config = {
+  parent: 'phaser-game',
+  type: Phaser.CANVAS,
+  render: {
+      pixelArt: true  // prevent pixel art from getting blurred when scaled
+  },
+  width: 1280,
+  height: 800,
+  scene: [Load, Pathfinder]
+}
+
+var cursors;
+const SCALE = 2.0;
+var my = {sprite: {}};
+
+console.log(my)
+
+const game = new Phaser.Game(config);
