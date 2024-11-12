@@ -40,6 +40,12 @@ document.querySelector('#app').innerHTML = `
 //
 
 
+var cursors;
+const SCALE = 2.0;
+var my = {sprite: {}};
+
+console.log(my)
+
 // game config
 let config = {
   parent: 'phaser-game',
@@ -49,13 +55,13 @@ let config = {
   },
   width: 1280,
   height: 800,
-  scene: [Load, Pathfinder]
+  scene: {
+      create: create,
+  }
+}
+function create() {
+  this.scene.add('Load', new Load(my), true); // Start the scene and pass myData
 }
 
-var cursors;
-const SCALE = 2.0;
-var my = {sprite: {}};
-
-console.log(my)
 
 const game = new Phaser.Game(config);

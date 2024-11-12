@@ -1,6 +1,8 @@
 class Pathfinder extends Phaser.Scene {
-    constructor() {
+    constructor(my) {
         super("pathfinderScene");
+        this.my = my;
+        console.log(my);
     }
 
     preload() {
@@ -27,7 +29,7 @@ class Pathfinder extends Phaser.Scene {
 
         // Create townsfolk sprite
         // Use setOrigin() to ensure the tile space computations work well
-        my.sprite.purpleTownie = this.add.sprite(this.tileXtoWorld(5), this.tileYtoWorld(5), "purple").setOrigin(0,0);
+        this.my.sprite.purpleTownie = this.add.sprite(this.tileXtoWorld(5), this.tileYtoWorld(5), "purple").setOrigin(0,0);
         
         // Camera settings
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
@@ -49,7 +51,7 @@ class Pathfinder extends Phaser.Scene {
         // Tell EasyStar which tiles can be walked on
         this.finder.setAcceptableTiles(walkables);
 
-        this.activeCharacter = my.sprite.purpleTownie;
+        this.activeCharacter = this.my.sprite.purpleTownie;
 
         // Handle mouse clicks
         // Handles the clicks on the map to make the character move
